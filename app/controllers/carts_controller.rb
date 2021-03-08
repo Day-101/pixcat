@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: %i[ show edit update destroy ]
+  before_action :redirect_if_not_owned, only: [:show]
 
   # GET /carts or /carts.json
   def index
@@ -62,6 +63,10 @@ class CartsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_cart
       @cart = Cart.find(params[:id])
+    end
+
+    def redirect_if_not_owned
+      redirect_to root_path unless current_user.cart.id.to_s == params[:id]
     end
 
     # Only allow a list of trusted parameters through.
