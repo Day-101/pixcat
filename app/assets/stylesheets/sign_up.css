@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  color: #141414;
+}
+#signup .container #signup-row #signup-column #signup-box {
+  margin-top: 120px;
+  max-width: 600px;
+  height: 440px;
+  border: 1px solid #d2d2d2;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+}
+#signup .container #signup-row #signup-column #signup-box #signup-form {
+  padding: 20px;
+}
+#signup .container #signup-row #signup-column #signup-box #signup-form #register-link {
+  margin-top: -85px;
+}
