@@ -1,4 +1,10 @@
 class User < ApplicationRecord
+  after_create :command_send
+
+  def command_send
+    UserMailer.command_email(self).deliver_now
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

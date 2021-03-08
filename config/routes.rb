@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'cart_item_jointables/destroy'
 	root "items#index"
   resources :items
   devise_for :users
