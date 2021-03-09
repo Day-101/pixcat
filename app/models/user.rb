@@ -1,5 +1,10 @@
 class User < ApplicationRecord
   after_create :command_send
+  after_create :create_cart
+
+  def create_cart
+    Cart.create(user: self)
+  end
 
   def command_send
     UserMailer.command_email(self).deliver_now
