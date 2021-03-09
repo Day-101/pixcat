@@ -7,6 +7,15 @@
   margin-bottom: 15px;
 }
 
-#hovering:hover {
+#card_style:hover {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+a.custom-card,
+a.custom-card:hover {
+  color: inherit;
+}
+
+#card_style_header {
+  height: 40px;
 }

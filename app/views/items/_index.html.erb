@@ -3,13 +3,13 @@
   <div class="row">
     <% @items.each do |item| %>
       <div class="col" id="space">
-        <div class="card" id="hovering">
-          <a href="<%=item_path(item.id)%>" class="custom-card">
-          <div class="card-header">
+        <div class="card" id="card_style">
+          <div class="card-header" id="card_style_header">
             <h5 class="card-title"> <%= item.title %> </h5>
           </div>
-          <img class="card-img-top" src="<%= item.image_url %>" alt="Card image not found">
-          <div class="card-body">
+          <a href="<%=item_path(item.id)%>" class="custom-card">
+          <img class="card-img-top" src="<%= item.image_url %>" alt="Card image not found" id="card_style_img">
+          <div class="card-body" id="card_style_body">
             <td class="text-right">
               <% if user_signed_in? %>
                 <%= button_to "Add to cart its only: #{item.price}$", cart_add_to_path(current_user.cart, item), method: "put", class: "btn btn-outline-primary btn-sm" %>
