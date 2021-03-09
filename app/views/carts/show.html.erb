@@ -1,9 +1,69 @@
-<ul>
-	<% @cart.items.each do |item| %>
-		<li>
-			<%= item.title %>
-			<%= button_to "Delete", cart_remove_from_path(current_user.cart, item) , method: "put" %>
-		</li>
-	<% end %>
-	<p>Total: <%= @cart.total %>$</p>
-</ul>
+<div class="container" id="cart-container">
+	<div class="row">
+		<div class="col-8">
+				<div class="panel-heading">
+					<div class="panel-title">
+						<div class="row">
+							<div class="col-6">
+								<h5>Shopping Cart</h5>
+							</div>
+							<div class="col-6 text-right">
+								<%= link_to "Continue shopping", root_path, class: "btn btn-primary btn-sm" %>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">
+					<% @cart.items.each do |item| %>
+						<hr>
+						<div class="row">
+							<div class="col-2"><img class="img-responsive" id="cat_picture" src="<%= item.image_url %>">
+							</div>
+							<div class="col-4">
+								<h4 class="product-name"><strong><%= item.title %></strong></h4><h4><small><%= item.description %></small></h4>
+							</div>
+							<div class="col-6">
+								<div class="row">
+									<div class="col-2">
+									</div>
+									<div class="col-2" id="price">
+										<h6><strong><%= item.price %><span class="text-muted">x</span></strong></h6>
+									</div>
+									<div class="col-4">
+										<input type="text" class="form-control input-sm" value="1">
+									</div>
+									<div class="col-4 text-right">
+										<%= button_to "Delete", cart_remove_from_path(current_user.cart, item), method: "put" %>
+									</div>
+								</div>
+							</div>
+						</div>
+					<% end %>
+					<hr>
+					<div class="row">
+						<div class="col-9">
+							<h6 class="text-right">Added items?</h6>
+						</div>
+						<div class="col-3">
+							<button type="button" class="btn btn-info btn-sm btn-block">
+								Update Cart
+							</button>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="panel-footer">
+					<div class="row text-center">
+						<div class="col-9">
+							<h4 class="text-right">Total <strong><%= @cart.total %>€</strong></h4>
+						</div>
+						<div class="col-3">
+							<button type="button" class="btn btn-success btn-block">
+								Checkout
+							</button>
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
+</div>
