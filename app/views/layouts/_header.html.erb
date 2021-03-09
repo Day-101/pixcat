@@ -1,37 +1,31 @@
 <div class="bg-primary">
-  <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary py-0">
-      <a class="navbar-brand text-white" href="/">PixCat <i class="fas fa-cat"></i></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <div class="container bg-primary py-0 d-flex">
 
-        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarColor03">
-          <p class="m-auto text-white fst-italic">The most beautiful cats are here</p>
-          <ul class="navbar-nav">
-            <% if user_signed_in? %>
+    <a class="navbar-brand text-white flex-grow-1" href="/">PixCat <i class="fas fa-cat"></i></a>
 
-              <%= link_to cart_path(current_user.cart), class:"nav-link active text-white" do %>
-                <li class="nav-item d-flex flex-column">
-                  <i class="fas fa-shopping-cart mx-auto"></i>
-                  <span>Cart</span>
-                </li>
-              <% end %>
+    <div class="d-flex justify-content-end">
+      <% if user_signed_in? %>
 
-              <%= button_to destroy_user_session_path, class:"nav-link active text-white d-flex flex-column btn", method: :delete do %>
-                <i class="fas fa-sign-out-alt mx-auto"></i>
-                <span>Sign Out</span>
-              <% end %>
+        <%= link_to cart_path(current_user.cart), class:"text-white" do %>
+          <div class="btn">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+          </div>
+        <% end %>
 
-            <% else %>
-              <%= link_to new_user_session_path, class:"nav-link active text-white d-flex flex-column" do %>
-                <i class="far fa-user mx-auto"></i>
-                <span>Sign in</span>
-              <% end %>
-            <% end %>
-          </ul>
-        </div>
-    </nav>
+        <%= button_to destroy_user_session_path, class:"text-white btn", method: :delete do %>
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Sign Out</span>
+        <% end %>
+
+      <% else %>
+        <%= link_to new_user_session_path, class:"text-white" do %>
+          <i class="far fa-user"></i>
+          <span>Sign in</span>
+        <% end %>
+      <% end %>
+    </div>
+
   </div>
 </div>
 
