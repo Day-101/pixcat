@@ -5,4 +5,5 @@
 			<%= button_to "Delete", cart_remove_from_path(current_user.cart, item) , method: "put" %>
 		</li>
 	<% end %>
+	<p>Total: <%= @cart.total %>$</p>
 </ul>
