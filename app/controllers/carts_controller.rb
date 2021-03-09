@@ -1,54 +1,38 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: %i[ show edit update destroy ]
+  before_action :set_cart, only: %i[ show edit update destroy create_item remove ]
   before_action :redirect_if_not_owned, only: [:show]
-
-  # GET /carts or /carts.json
-  def index
-    @carts = Cart.all
-  end
 
   # GET /carts/1 or /carts/1.json
   def show
     @cart = current_user.cart
   end
 
-  # GET /carts/new
-  def new
-    @cart = Cart.new
-  end
-
-  # GET /carts/1/edit
-  def edit
-    @cart = current_user.cart
-  end
-
   # POST /carts or /carts.json
-  def create
-    @cart = Cart.new(cart_params)
 
-    respond_to do |format|
-      if @cart.save
-        format.html { redirect_to @cart, notice: "Cart was successfully created." }
-        format.json { render :show, status: :created, location: @cart }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
-      end
+  def create_item
+    @cart.add_product(params)
+    if @cart.save
+      redirect_to current_user.cart
+    else
+      flash[:alert] = "Can't add that to the cart"
+      redirect_to item_path(params[:item_id])
     end
   end
 
-  # PATCH/PUT /carts/1 or /carts/1.json
-  def update
-    respond_to do |format|
-      if @cart.update(cart_params)
-        format.html { redirect_to @cart, notice: "Cart was successfully updated." }
-        format.json { render :show, status: :ok, location: @cart }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
-      end
+  def remove
+    cart_jt = CartItemJointable.find_by(cart: @cart, item: Item.find(params[:item_id]))
+
+    if cart_jt
+      cart_jt.destroy
+      flash[:notice] = "Item successfully deleted"
+      redirect_to @cart
+    else
+      flash[:alert] = "Error while deleting item"
+      redirect_to @cart
     end
+
   end
+
 
   # DELETE /carts/1 or /carts/1.json
   def destroy
@@ -61,8 +45,11 @@ class CartsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
     def set_cart
-      @cart = Cart.find(params[:id])
+      @cart = Cart.find(params[:cart_id])
+      rescue ActiveRecord::RecordNotFound
+      session[:cart_id] = current_user.cart
     end
 
     def redirect_if_not_owned
@@ -72,5 +59,9 @@ class CartsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def cart_params
       params.fetch(:cart, {})
+    end
+
+    def cart_item_params
+      params.permit(:cart_id, :item_id)
     end
 end

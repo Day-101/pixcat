@@ -7,12 +7,18 @@
   <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarColor03">
     <ul class="navbar-nav">
       <% if user_signed_in? %>
-        <a class="nav-link active text-white" href="#">
+        <%= button_to destroy_user_session_path, class:"nav-link active text-white d-flex flex-column btn", method: :delete do %>
+          <i class="fas fa-sign-out-alt mx-auto"></i>
+          <span>Sign Out</span>
+        <% end %>
+
+        <%= link_to cart_path(current_user.cart), class:"nav-link active text-white" do %>
           <li class="nav-item d-flex flex-column">
             <i class="fas fa-shopping-cart mx-auto"></i>
             <span>Cart</span>
           </li>
-        </a>
+        <% end %>
+
       <% else %>
         <%= link_to new_user_session_path, class:"nav-link active text-white d-flex flex-column" do %>
           <i class="far fa-user mx-auto"></i>

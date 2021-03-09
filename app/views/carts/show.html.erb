@@ -1,10 +1,8 @@
-<p id="notice"><%= notice %></p>
-
 <ul>
 	<% @cart.items.each do |item| %>
 		<li>
 			<%= item.title %>
-			<%= button_to "Delete",  user_cart_cart_item_jointable_path(current_user, @cart, CartItemJointable.find_by(cart: @cart, item: item)), class: "btn btn-danger", method: :delete %>
+			<%= button_to "Delete", cart_remove_from_path(current_user.cart, item) , method: "put" %>
 		</li>
 	<% end %>
 </ul>

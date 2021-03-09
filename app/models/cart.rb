@@ -8,4 +8,8 @@ class Cart < ApplicationRecord
 		self.items.each { |item| price += item.price }
 		return price
 	end
+
+	def add_product(cart_params)
+		CartItemJointable.create(cart: self, item: Item.find(cart_params[:item_id]))
+	end
 end
