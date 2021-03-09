@@ -10,7 +10,9 @@
           <img class="card-img-top" src="<%= item.image_url %>" alt="Card image not found">
           <div class="card-body">
             <td class="text-right">
-              <%= button_to "Add to cart its only: #{item.price}$", item_path(item.id), class: "btn btn-outline-primary btn-sm", :method => "get" %>
+              <% if user_signed_in?  %>
+                <%= button_to "Add to cart its only: #{item.price}$", item_path(item.id), class: "btn btn-outline-primary btn-sm", :method => "get" %>
+              <% end %>
               <br>
               <%= button_to "Show me this cat !", item_path(item.id), class: "btn btn-outline-info btn-sm", :method => "get" %>
             </td>
