@@ -4,19 +4,19 @@
     <% @items.each do |item| %>
       <div class="col" id="space">
         <div class="card" id="hovering">
+          <a href="<%=item_path(item.id)%>" class="custom-card">
           <div class="card-header">
             <h5 class="card-title"> <%= item.title %> </h5>
           </div>
           <img class="card-img-top" src="<%= item.image_url %>" alt="Card image not found">
           <div class="card-body">
             <td class="text-right">
-              <% if user_signed_in?  %>
-                <%= button_to "Add to cart its only: #{item.price}$", item_path(item.id), class: "btn btn-outline-primary btn-sm", :method => "get" %>
+              <% if user_signed_in? %>
+                <%= button_to "Add to cart its only: #{item.price}$", cart_add_to_path(current_user.cart, item), method: "put", class: "btn btn-outline-primary btn-sm" %>
               <% end %>
-              <br>
-              <%= button_to "Show me this cat !", item_path(item.id), class: "btn btn-outline-info btn-sm", :method => "get" %>
             </td>
           </div>
+          </a>
         </div>
       </div>
     <% end %>
