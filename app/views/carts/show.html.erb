@@ -6,4 +6,6 @@
 		</li>
 	<% end %>
 	<p>Total: <%= @cart.total %>$</p>
+	<%= button_to "Checkout", cart_create_path(cart_id: @cart.id), class:"btn btn-primary m-2", remote: true %>
+	
 </ul>

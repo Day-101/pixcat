@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: %i[ show edit update destroy create_item remove ]
+  before_action :set_cart, only: %i[ show edit update destroy create_item remove create ]
   before_action :redirect_if_not_owned, only: [:show]
 
   # GET /carts/1 or /carts/1.json
@@ -41,6 +41,33 @@ class CartsController < ApplicationController
       format.html { redirect_to carts_url, notice: "Cart was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def create
+    @session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [{
+      name: @cart.items[0].title,
+      amount: (@cart.total * 100).to_i,
+      currency: 'eur',
+      quantity: 1
+        },],
+    mode: 'payment',
+    client_reference_id: current_user.email,
+    success_url: cart_success_url(@cart.id) + '?session_id={CHECKOUT_SESSION_ID}',
+    cancel_url: cart_cancel_url(@cart.id)
+  )
+  respond_to do |format|
+    format.js
+  end
+  end
+
+  def success
+
+  end
+
+  def cancel
+
   end
 
   private
