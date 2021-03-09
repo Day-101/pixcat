@@ -1,29 +1,30 @@
-<div class="container" id="homepage">
-  <div class="grid-container index-cat">
-    <% @items.each do |item| %>
-      <% if user_signed_in? %>
-        <div class="col" id="space">
-          <div class="card" id="card_style">
-            <div class="card-header" id="card_style_header">
-              <h5 class="card-title"> <%= item.title %> </h5>
-            </div>
-            <a href="<%=item_path(item.id)%>" class="custom-card">
-            <img class="card-img-top" src="<%= item.image_url %>" alt="Card image not found" id="card_style_img">
-            <div class="card-body" id="card_style_body">
-              <td>
-                <%= button_to "Add to cart its only: #{item.price}$", cart_add_to_path(current_user.cart, item), method: "put", class: "btn btn-outline-primary btn-sm" %>
-              </td>
-            </div>
-            </a>
+<div class="container grid-container grid-responsive" id="homepage">
+  <% @items.each do |item| %>
+    <% if user_signed_in? %>
+      <a href="<%= item_path(item.id) %>" class="custom-card text-decoration-none">
+        <div class="p-4">
+          <img src="<%= item.image_url %>" class="card-img-top rounded-0" alt="...">
+          <div class="">
+            <h5 class="card-title text-center m-0 p-2"><%= item.title %></h5>
+            <span class="text-center d-block mb-1"><%= "#{item.price}$" %></span>
+            <span class="text-center">
+              <%= button_to "Add to cart", cart_add_to_path(current_user.cart, item), method: "put", class: "btn btn-outline-primary btn-sm" %>
+            </span>
           </div>
         </div>
-      <% else %>
-        <div class="">
+      </a>
 
-         <img class="" src="<%= item.image_url %>" alt="">
 
+    <% else %>
+      <a href="<%=new_user_session_path%>" class="custom-card text-decoration-none">
+        <div class="pt-4 pr-4 pl-4">
+          <img src="<%= item.image_url %>" class="card-img-top rounded-0" alt="...">
+          <div class="">
+            <h5 class="card-title text-center m-0 p-2"><%= item.title %></h5>
+          </div>
         </div>
-      <% end %>
+      </a>
+
     <% end %>
-  </div>
+  <% end %>
 </div>

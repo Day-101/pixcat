@@ -16,14 +16,20 @@
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-a.custom-card,
 a.custom-card:hover {
-  color: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.4rem;
 }
 
 #card_style_header {
   height: 40px;
 }
 
-.grid-container{display: grid;}
-.index-cat{grid-template-columns: 1fr 1fr 1fr 1fr;}
+.grid-container{display: grid;grid-gap: 2em;}
+
+@media (max-width: 576px) {
+.grid-responsive{grid-template-columns: 1fr;}}
+@media (min-width: 768px) {
+.grid-responsive{grid-template-columns: 1fr 1fr 1fr;}}
+@media (min-width: 992px) {
+.grid-responsive{grid-template-columns: 1fr 1fr 1fr 1fr;}}
