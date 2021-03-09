@@ -1,0 +1,17 @@
+<div class="container" id="profil-container">
+  <div class="row">
+    <div class="col-8">
+      <h1>My profil</h1>
+      <small>(<%= @user.email %>)</small>  <%= button_to "Edit", edit_user_registration_path, :method => "get", class: "btn btn-info btn-sm" %>
+      <hr>
+      <p>Purchase history :</p>
+
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Random cats picture
+          <span class="badge badge-info badge-pill">09/03/2021</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
