@@ -1,20 +1,21 @@
 
-<div class="container" id="homepage">
+<div class="container" id="showpage">
   <div class="card">
     <img class="card-img" src="<%= @item.image_url %>" alt="Card image not found">
     <div class="card-body">
       <h5 class="card-title"> <%= @item.title %> </h5>
       <p class="card-text"> <%= @item.description %> </p>
       <p class="card-text"> <%= @item.price %> $ </p>
-      <td>
-        <!-- <= if  %>  rajouter la fonction de comparaison du createur de l'item -->
-          <%= link_to 'Edit', edit_item_path(@item), class: "btn btn-outline-danger" %>
-        <!-- < end %> -->
-       <% if user_signed_in?  %>  
-          <%= button_to "Add to cart", cart_add_to_path(current_user.cart, @item), method: "put", class: "btn btn-outline-primary" %>
-       <% end %>
-        <%= link_to 'Back', items_path, class: "btn btn-outline-secondary" %>
-      </td>
+      <tr>
+        <% if user_signed_in? %>
+          <%= link_to "Add to cart", cart_add_to_path(current_user.cart, @item), method: "put", class: "btn btn-outline-primary" %>
+          <%= link_to 'Back', items_path, class: "btn btn-outline-secondary" %>
+        <% else %>
+          <%= link_to 'Back', items_path, class: "btn btn-outline-secondary" %>
+        <% end %>
+      </tr>
     </div>
   </div>
 </div>
+
+<!-- <= link_to 'Edit', edit_item_path(@item), class: "btn btn-outline-danger" %> -->
