@@ -1,0 +1,16 @@
+#trash {
+  color: rgb(180, 6, 6);
+}
+
+#cart-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+#cat_picture {
+  height: 85px;
+}
+
+#price {
+  padding-top: 10px;
+}
