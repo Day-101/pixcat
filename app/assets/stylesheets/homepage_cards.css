@@ -24,3 +24,6 @@ a.custom-card:hover {
 #card_style_header {
   height: 40px;
 }
+
+.grid-container{display: grid;}
+.index-cat{grid-template-columns: 1fr 1fr 1fr 1fr;}

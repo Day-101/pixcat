@@ -1,6 +1,5 @@
-
 <div class="container" id="homepage">
-  <div class="row">
+  <div class="grid-container index-cat">
     <% @items.each do |item| %>
       <% if user_signed_in? %>
         <div class="col" id="space">
@@ -19,15 +18,10 @@
           </div>
         </div>
       <% else %>
-        <div class="col" id="space">
-          <div class="card" id="card_style_not_log">
-            <div class="card-header" id="card_style_header">
-              <h5 class="card-title"> <%= item.title %> </h5>
-            </div>
-            <a href="<%=item_path(item.id)%>" class="custom-card">
-            <img class="card-img-top" src="<%= item.image_url %>" alt="Card image not found" id="card_style_img">
-            </a>
-          </div>
+        <div class="">
+
+         <img class="" src="<%= item.image_url %>" alt="">
+
         </div>
       <% end %>
     <% end %>
