@@ -2,23 +2,34 @@
 <div class="container" id="homepage">
   <div class="row">
     <% @items.each do |item| %>
-      <div class="col" id="space">
-        <div class="card" id="card_style">
-          <div class="card-header" id="card_style_header">
-            <h5 class="card-title"> <%= item.title %> </h5>
-          </div>
-          <a href="<%=item_path(item.id)%>" class="custom-card">
-          <img class="card-img-top" src="<%= item.image_url %>" alt="Card image not found" id="card_style_img">
-          <div class="card-body" id="card_style_body">
-            <td class="text-right">
-              <% if user_signed_in? %>
+      <% if user_signed_in? %>
+        <div class="col" id="space">
+          <div class="card" id="card_style">
+            <div class="card-header" id="card_style_header">
+              <h5 class="card-title"> <%= item.title %> </h5>
+            </div>
+            <a href="<%=item_path(item.id)%>" class="custom-card">
+            <img class="card-img-top" src="<%= item.image_url %>" alt="Card image not found" id="card_style_img">
+            <div class="card-body" id="card_style_body">
+              <td>
                 <%= button_to "Add to cart its only: #{item.price}$", cart_add_to_path(current_user.cart, item), method: "put", class: "btn btn-outline-primary btn-sm" %>
-              <% end %>
-            </td>
+              </td>
+            </div>
+            </a>
           </div>
-          </a>
         </div>
-      </div>
+      <% else %>
+        <div class="col" id="space">
+          <div class="card" id="card_style_not_log">
+            <div class="card-header" id="card_style_header">
+              <h5 class="card-title"> <%= item.title %> </h5>
+            </div>
+            <a href="<%=item_path(item.id)%>" class="custom-card">
+            <img class="card-img-top" src="<%= item.image_url %>" alt="Card image not found" id="card_style_img">
+            </a>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

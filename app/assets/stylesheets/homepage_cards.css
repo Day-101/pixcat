@@ -7,6 +7,11 @@
   margin-bottom: 15px;
 }
 
+#card_style_not_log {
+  height: 220px;
+  width: 250px;
+}
+
 #card_style:hover {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
