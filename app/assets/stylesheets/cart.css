@@ -8,9 +8,13 @@
 }
 
 #cat_picture {
-  height: 85px;
+  width: 100%;
 }
 
 #price {
   padding-top: 10px;
+}
+
+#button-trash {
+  margin: 0px;
 }
