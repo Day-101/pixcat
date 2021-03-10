@@ -10,5 +10,9 @@ class UserMailer < ApplicationMailer
   
       # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
       mail(to: @user.email, subject: "Merci d'avoir passé commande chez nous !") 
+      mail(to: "catadmin@yopmail.com", subject: "Un client à passé commande chez nous !") 
     end
+
+    
+
 end
