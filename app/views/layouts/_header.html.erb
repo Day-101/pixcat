@@ -19,12 +19,16 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="<%= user_path(current_user) %>">Account setting</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="<%= destroy_user_session_path %>">Sign Out</a></li>
+              <li>
+                <%= link_to destroy_user_session_path, class:"dropdown-item", method: :delete do %>
+                  Sign Out
+                <% end %>
+              </li>
             </ul>
           </span>
 
       <% else %>
-        <%= link_to new_user_session_path, class:"text-white btn" do %>
+        <%= link_to new_user_session_path, class:"text-white btn signin" do %>
           <i class="far fa-user"></i>
           <span>Sign in</span>
         <% end %>

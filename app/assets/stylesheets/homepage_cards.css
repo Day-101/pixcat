@@ -25,7 +25,8 @@
     grid-template-rows: 1fr 1fr;}
   .navbar-brand{
     grid-column: 2/span 2;
-    text-align: center;}
+    text-align: center;
+    margin: 0;}
   .cart{
     grid-column: 2;
     text-align: center;}
@@ -34,5 +35,9 @@
   .i-cart{
     margin-right: 6px;
     padding-top: 2px;
+  }
+  .signin{
+    grid-row: 2;
+    grid-column: 2/span 2;
   }
 }
