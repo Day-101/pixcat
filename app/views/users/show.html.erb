@@ -12,9 +12,11 @@
           <% order.items.each do |item| %>
               <%=item.title%>
               <%=item.price%>€
+              <%= image_tag item.cat_picture, :style => "height: 50px" %>
               <br>
               <% total= total+item.price %>
           <% end %>
+          <br>
             Total: <%= total %>€
             <% total=0 %>
             <span class="badge badge-info badge-pill"><%=order.created_at%></span>
