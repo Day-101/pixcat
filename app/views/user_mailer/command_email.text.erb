@@ -1,8 +1,14 @@
 Merci d'avoir passé commande chez nous  !
 ==========================================================
  
-Voici le resumé de ta commande : .
+Voici le resumé de ta commande : 
+
+<%= @order.items.each do |item|%>
+
+  <%= image_tag item.cat_picture %>
+    
+<% end %>
  
 Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
  
-À très vite sur monsite.fr !
+À très vite sur PixCat.fr !

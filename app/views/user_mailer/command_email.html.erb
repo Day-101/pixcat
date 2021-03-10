@@ -8,17 +8,17 @@
     <p>
       Tu t'es inscrit sur monsite.fr en utilisant l'e-mail suivant : <%= @user.email %>.
     </p>
-    <p>
+    <h4>
      Voici les details de ta commande :
-    </p>
-    <%= @order.items.each do |item|%>
+    </h4>
+    <% @order.items.each do |item|%>
 
-    <%= image_tag image.cat_picture %>
+      <%= image_tag item.cat_picture %>
     
     <% end %>
     <p>
       Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
     </p>
-    <p> À très vite sur monsite.fr !
+    <p> À très vite sur PixCat.fr !
   </body>
 </html>
