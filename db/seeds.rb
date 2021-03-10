@@ -5,7 +5,6 @@ puts "Database has been cleaned up."
     title: Faker::Creature::Cat.name,
     description: Faker::Creature::Cat.breed,
     price: Faker::Number.decimal(l_digits: 2),
-    image_url: "https://loremflickr.com/800/600/cat"
   )
 
   url = URI.parse(Faker::LoremFlickr.image(size: "1280x720"))

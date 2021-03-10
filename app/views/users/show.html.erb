@@ -14,11 +14,11 @@
               <%=item.price%>€
               <br>
               <% total= total+item.price %>
-              <% end %>
-              Total: <%= total %>€
-              <% total=0 %>
-              <span class="badge badge-info badge-pill"><%=order.created_at%></span>
-              <br>
+          <% end %>
+            Total: <%= total %>€
+            <% total=0 %>
+            <span class="badge badge-info badge-pill"><%=order.created_at%></span>
+            <br>
         </li>
         <% end %>
       </ul>
