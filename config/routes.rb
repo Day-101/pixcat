@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 	root "items#index"
   resources :items
   devise_for :users
+	resources :users, only: [:show]
 
   resources :carts, only: [:show] do
   	put "add/:item_id", to: "carts#create_item", as: :add_to
