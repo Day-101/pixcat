@@ -10,7 +10,7 @@
           <p class="card-text"> <%= @item.price %> $ </p>
           <tr>
             <% if user_signed_in? %>
-              <%= link_to "Add to cart", cart_add_to_path(current_user.cart, @item), method: "put", class: "btn btn-outline-primary" %>
+              <%= button_to "Add to cart", cart_add_to_path(current_user.cart, @item), method: "put", class: "btn btn-outline-primary" %>
               <%= link_to 'Back', items_path, class: "btn btn-outline-secondary" %>
             <% else %>
               <%= link_to 'Back', items_path, class: "btn btn-outline-secondary" %>
