@@ -3,10 +3,19 @@
   margin-bottom: 20px;
 }
 
-#space {
-  margin-bottom: 15px;
+#card_style:hover {
 }
 
-#hovering:hover {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+.custom-card:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.125);
+  border-radius: 0.4rem;
 }
+
+.grid-container{display: grid;grid-gap: 2em;}
+
+@media (max-width: 576px) {
+.grid-responsive{grid-template-columns: 1fr;}}
+@media (min-width: 768px) {
+.grid-responsive{grid-template-columns: 1fr 1fr 1fr;}}
+@media (min-width: 992px) {
+.grid-responsive{grid-template-columns: 1fr 1fr 1fr 1fr;}}

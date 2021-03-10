@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: %i[ show edit update destroy create_item remove ]
+  before_action :set_cart, only: %i[ show edit update destroy create_item remove create ]
   before_action :redirect_if_not_owned, only: [:show]
 
   # GET /carts/1 or /carts/1.json
@@ -43,17 +43,72 @@ class CartsController < ApplicationController
     end
   end
 
+  def create
+    items = []
+    orders = []
+
+    @cart.items.each do |item|
+      items << {
+      name: item.title,
+      amount: (item.price * 100).to_i,
+      currency: 'eur',
+      quantity: 1,
+      }
+
+      orders << item.id
+    end
+    orders = orders.join(",")
+
+    @session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: items,
+    mode: 'payment',
+    client_reference_id: current_user.id,
+    metadata: { order_id: orders, },
+    success_url: cart_success_url(@cart.id) + '?session_id={CHECKOUT_SESSION_ID}',
+    cancel_url: cart_cancel_url(@cart.id)
+  )
+
+  respond_to do |format|
+    format.js
+  end
+  end
+
+  def success
+    @session = Stripe::Checkout::Session.retrieve(params[:session_id])
+    if @session.payment_status == "paid"
+      @user = User.find(@session.client_reference_id)
+      order = Order.create(user: @user)
+      
+      @session.metadata.order_id.split(",").each do |id|
+        OrderItemJointable.create(order: order, item: Item.find(id.to_i))
+      end
+
+      @user.cart.items.destroy_all
+
+    else
+      redirect_to root_path flash.alert = "Your order is not fullfilled"
+    end
+  end
+
+  def cancel
+    redirect_to root_path flash.alert = "You canceled this order"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
 
     def set_cart
-      @cart = Cart.find(params[:cart_id])
+      begin
+        @cart = Cart.find(params[:cart_id])
       rescue ActiveRecord::RecordNotFound
-      session[:cart_id] = current_user.cart
+        session[:cart_id] = current_user.cart.id
+        @cart = current_user.cart
+      end
     end
 
     def redirect_if_not_owned
-      redirect_to root_path unless current_user.cart.id.to_s == params[:id]
+      redirect_to cart_path(current_user.cart) unless current_user.cart.id.to_s == params[:id]
     end
 
     # Only allow a list of trusted parameters through.

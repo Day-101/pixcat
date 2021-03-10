@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   resources :carts, only: [:show] do
   	put "add/:item_id", to: "carts#create_item", as: :add_to
   	put "remove/:item_id", to: "carts#remove", as: :remove_from
+
+  		post "create", to: "carts#create"
+  		get 'success', to: 'carts#success'
+  		get 'cancel', to: 'carts#cancel'
   end
 
   # 	resources :carts do
