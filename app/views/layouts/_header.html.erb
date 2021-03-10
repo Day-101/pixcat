@@ -1,22 +1,27 @@
 <div class="bg-primary">
-  <div class="container bg-primary py-0 d-flex">
+  <div class="container bg-primary py-0 d-flex grid-nav">
 
     <a class="navbar-brand text-white flex-grow-1" href="/">PixCat <i class="fas fa-cat"></i></a>
 
-    <div class="d-flex justify-content-end">
       <% if user_signed_in? %>
 
-        <%= link_to cart_path(current_user.cart), class:"text-white" do %>
-          <div class="btn">
-            <i class="fas fa-shopping-cart"></i>
+        <%= link_to cart_path(current_user.cart), class:"text-white cart" do %>
+          <div class="btn btn-cart">
+            <i class="fas fa-shopping-cart i-cart"></i>
             <span>Cart</span>
           </div>
         <% end %>
-
-        <%= button_to destroy_user_session_path, class:"text-white btn", method: :delete do %>
-          <i class="fas fa-sign-out-alt"></i>
-          <span>Sign Out</span>
-        <% end %>
+          <span class="dropdown" style="font-family: 'Montserrat';">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="far fa-user"></i>
+              Profile
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="<%= user_path(current_user) %>">Account setting</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="<%= destroy_user_session_path %>">Sign Out</a></li>
+            </ul>
+          </span>
 
       <% else %>
         <%= link_to new_user_session_path, class:"text-white btn" do %>
@@ -26,6 +31,4 @@
       <% end %>
     </div>
 
-  </div>
 </div>
-
