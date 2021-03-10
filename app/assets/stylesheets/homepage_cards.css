@@ -3,26 +3,12 @@
   margin-bottom: 20px;
 }
 
-#space {
-  margin-bottom: 15px;
-}
-
-#card_style_not_log {
-  height: 220px;
-  width: 250px;
-}
-
 #card_style:hover {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-a.custom-card:hover {
-  border: 1px solid rgba(0, 0, 0, 0.125);
+.custom-card:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.125);
   border-radius: 0.4rem;
-}
-
-#card_style_header {
-  height: 40px;
 }
 
 .grid-container{display: grid;grid-gap: 2em;}
