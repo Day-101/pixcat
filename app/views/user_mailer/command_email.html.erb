@@ -4,21 +4,22 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1> Merci d'avoir passé commande chez nous !</h1>
+    <h1> Thank you for your Order !</h1>
     <p>
-      Tu t'es inscrit sur monsite.fr en utilisant l'e-mail suivant : <%= @user.email %>.
+      You are registered on our website "PixCat.fr" using the following e-mail : <%= @user.email %>.
     </p>
     <h4>
-     Voici les details de ta commande :
+     Here is the detail of your order :
     </h4>
+   
     <% @order.items.each do |item|%>
-
+      <%= link_to rails_blob_url(item.cat_picture, disposition: "attachment") do %>
       <%= image_tag item.cat_picture %>
-    
+      <% end %>
     <% end %>
     <p>
-      Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
+      To acces your client profile, please sign-in : <%= @url %>.
     </p>
-    <p> À très vite sur PixCat.fr !
+    <p> See you soon on PixCat.fr !
   </body>
 </html>
