@@ -63,3 +63,5 @@ gem 'devise'
 gem 'dotenv-rails'
 
 gem 'stripe'
+
+gem 'aws-sdk-s3'
