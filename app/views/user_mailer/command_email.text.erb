@@ -1,14 +1,19 @@
-Merci d'avoir passé commande chez nous  !
+Thank you for your Order  !
 ==========================================================
- 
-Voici le resumé de ta commande : 
 
-<%= @order.items.each do |item|%>
+ You are registered on our website "PixCat.fr" using the following e-mail : <%= @user.email %>.
 
-  <%= image_tag item.cat_picture %>
-    
-<% end %>
+
+Here is the detail of your order : 
+
+
+ <% @order.items.each do |item|%>
+      <%= link_to rails_blob_url(item.cat_picture, disposition: "attachment") do %>
+      <%= image_tag item.cat_picture %>
+      <% end %>
+    <% end %>
+
  
-Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
+To acces your client profile, please sign-in : <%= @url %>.
  
 À très vite sur PixCat.fr !
