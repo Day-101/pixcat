@@ -2,9 +2,6 @@
   color: rgb(180, 6, 6);
 }
 
-#cart-container {
-
-}
 .cart-box{
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.125);
   border-radius: 0.4rem;
@@ -20,4 +17,15 @@
 
 #button-trash {
   margin: 0px;
+}
+
+#success-pay {
+  margin-top: 120px;
+  margin-bottom: 80px;
+  max-width: 700px;
+  height: 380px;
+  border: 1px solid #d2d2d2;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
 }
