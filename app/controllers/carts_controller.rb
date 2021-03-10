@@ -84,6 +84,7 @@ class CartsController < ApplicationController
         OrderItemJointable.create(order: order, item: Item.find(id.to_i))
       end
       order.save
+      order.command_send
       @user.cart.items.destroy_all
 
     else
