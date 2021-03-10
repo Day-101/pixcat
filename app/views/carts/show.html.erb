@@ -17,7 +17,7 @@
 					<% @cart.items.each do |item| %>
 						<hr>
 						<div class="row">
-							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-2"><img id="cat_picture" src="<%= item.image_url %>">
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-2"><%= image_tag item.cat_picture, :class => "cat_picture" %>
 							</div>
 							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 								<h4 class="product-name"><strong><%= item.title %></strong></h4><h4><small><%= item.description %></small></h4>
