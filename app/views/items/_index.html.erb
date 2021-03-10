@@ -1,19 +1,20 @@
 <div class="container grid-container grid-responsive" id="homepage">
   <% @items.each do |item| %>
     <% if user_signed_in? %>
-      <a href="<%= item_path(item.id) %>" class="custom-card text-decoration-none">
-        <div class="p-4">
-          <img src="<%= item.image_url %>" class="card-img-top rounded-0" alt="...">
+    <div class="custom-card p-4">
+        <a href="<%= item_path(item.id) %>" class="text-decoration-none">
           <div class="">
-            <h5 class="card-title text-center m-0 p-2"><%= item.title %></h5>
-            <span class="text-center d-block mb-1"><%= "#{item.price}$" %></span>
-            <span class="text-center">
-              <%= button_to "Add to cart", cart_add_to_path(current_user.cart, item), method: "put", class: "btn btn-outline-primary btn-sm" %>
-            </span>
+            <%= image_tag item.cat_picture, :class => "card-img-top rounded-0" %>
+            <div class="">
+              <h5 class="card-title text-center m-0 p-2"><%= item.title %></h5>
+              <span class="text-center d-block mb-1"><%= "#{item.price}$" %></span>
+            </div>
           </div>
-        </div>
-      </a>
-
+        </a>
+        <span class="text-center">
+          <%= button_to "Add to cart", cart_add_to_path(current_user.cart, item), method: "put", class: "btn btn-outline-primary btn-sm" %>
+        </span>
+    </div>
 
     <% else %>
       <a href="<%=new_user_session_path%>" class="custom-card text-decoration-none">
