@@ -1,7 +1,7 @@
 <div class="container" id="profil-container">
   <div class="row">
     <div class="col-8">
-      <h1>My profil</h1>
+      <h1>My profile</h1>
       <small>(<%= @user.email %>)</small>  <%= button_to "Edit", edit_user_registration_path, :method => "get", class: "btn btn-info btn-sm" %>
       <hr>
       <p>Purchase history :</p>
@@ -12,9 +12,11 @@
           <% order.items.each do |item| %>
               <%=item.title%>
               <%=item.price%>€
+              <%= image_tag item.cat_picture, :style => "height: 50px" %>
               <br>
               <% total= total+item.price %>
           <% end %>
+          <br>
             Total: <%= total %>€
             <% total=0 %>
             <span class="badge badge-info badge-pill"><%=order.created_at%></span>
