@@ -19,7 +19,7 @@
     <% else %>
       <a href="<%=new_user_session_path%>" class="custom-card text-decoration-none">
         <div class="pt-4 pr-4 pl-4">
-          <img src="<%= item.image_url %>" class="card-img-top rounded-0" alt="...">
+          <%= image_tag item.cat_picture, :class => "card-img-top rounded-0" %>
           <div class="">
             <h5 class="card-title text-center m-0 p-2 text-secondary"><%= item.title %></h5>
           </div>
