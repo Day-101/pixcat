@@ -7,7 +7,7 @@
         <div class="card-body">
           <h5 class="card-title"> <%= @item.title %> </h5>
           <p class="card-text"> <%= @item.description %> </p>
-          <p class="card-text"> <%= @item.price %> $ </p>
+          <p class="card-text"> <%= @item.price %> € </p>
           <tr>
             <% if user_signed_in? %>
               <%= button_to "Add to cart", cart_add_to_path(current_user.cart, @item), method: "put", class: "btn btn-outline-primary" %>

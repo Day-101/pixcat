@@ -1,31 +1,24 @@
 <div class="container grid-container grid-responsive my-4">
   <% @items.each do |item| %>
-    <% if user_signed_in? %>
     <div class="custom-card p-4">
+    <% if user_signed_in? %>
         <a href="<%= item_path(item.id) %>" class="text-decoration-none">
+      <% else %>
+        <a href="<%=new_user_session_path%>" class="custom-card text-decoration-none">
+    <% end %>
           <div class="">
             <%= image_tag item.thumbnail, :class => "card-img-top img-card-radius" %>
             <div class="">
               <h5 class="card-title text-center m-0 p-2 text-secondary"><%= item.title %></h5>
-              <span class="text-center d-block mb-1"><%= "#{item.price}$" %></span>
+              <span class="text-center d-block mb-1"><%= "#{item.price} €" %></span>
             </div>
           </div>
         </a>
+    <% if user_signed_in? %>
         <span class="text-center">
           <%= button_to "Add to cart", cart_add_to_path(current_user.cart, item), method: "put", class: "btn btn-outline-primary btn-sm" %>
         </span>
-    </div>
-
-    <% else %>
-      <a href="<%=new_user_session_path%>" class="custom-card text-decoration-none">
-        <div class="pt-4 pr-4 pl-4">
-          <%= image_tag item.thumbnail, :class => "card-img-top rounded-0" %>
-          <div class="">
-            <h5 class="card-title text-center m-0 p-2 text-secondary"><%= item.title %></h5>
-          </div>
-        </div>
-      </a>
-
     <% end %>
+    </div>
   <% end %>
 </div>
