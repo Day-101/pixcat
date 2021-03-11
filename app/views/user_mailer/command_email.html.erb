@@ -11,9 +11,9 @@
     </h4>
     <% @order.items.each do |item|%> 
 
-      <%= link_to item.title, item.cat_picture.service_url %>
+       <%= link_to item.title, item.cat_picture.service_url %> 
           
-    <% end %> 
+   <% end  %> 
     <p>
       You can acces all your orders by following  <%= link_to "this link", user_url(@order.user) %>.
     </p>

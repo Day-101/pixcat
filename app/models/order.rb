@@ -6,4 +6,8 @@ class Order < ApplicationRecord
 	def command_send
 		UserMailer.command_email(self).deliver_now
 	end
+	
+	def admin_command_send
+		UserMailer.admin_command_email(self).deliver_now
+	end
 end
