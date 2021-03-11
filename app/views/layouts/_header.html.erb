@@ -1,15 +1,15 @@
 <div class="bg-primary">
   <div class="container bg-primary py-0 d-flex grid-nav">
-    <a class="navbar-brand text-white flex-grow-1 rocknroll" href="/">PixCat <i class="fas fa-cat"></i></a>
+    <a class="navbar-brand text-white flex-grow-1 rocknroll text-shadow" href="/">PixCat <i class="fas fa-cat"></i></a>
       <% if user_signed_in? %>
-        <%= link_to cart_path(current_user.cart), class:"text-white cart" do %>
+        <%= link_to cart_path(current_user.cart), class:"text-white cart text-decoration-none text-shadow" do %>
           <div class="btn btn-cart">
             <i class="fas fa-shopping-cart i-cart"></i>
             <span>Cart</span>
           </div>
         <% end %>
           <span class="dropdown" style="font-family: 'Montserrat';">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-white text-shadow" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="far fa-user"></i>
               Profile
             </a>
@@ -24,7 +24,7 @@
             </ul>
           </span>
       <% else %>
-        <%= link_to new_user_session_path, class:"text-white btn signin" do %>
+        <%= link_to new_user_session_path, class:"text-white btn signin text-shadow" do %>
           <i class="far fa-user"></i>
           <span>Sign in</span>
         <% end %>
