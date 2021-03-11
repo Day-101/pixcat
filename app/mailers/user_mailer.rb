@@ -6,7 +6,7 @@ class UserMailer < ApplicationMailer
       @user = order.user  
       @order = order    
       # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-      mail(to: @user.email, subject: "Merci d'avoir passé commande chez nous !") 
+      mail(to: @user.email, subject: "Thanks for ordering ! Here are your pictures :") 
      
     end
 
@@ -14,7 +14,7 @@ class UserMailer < ApplicationMailer
       #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
       @order = order    
       # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-      mail(to: "catadmin@yopmail.com", subject: "Merci d'avoir passé commande chez nous !") 
+      mail(to: "catadmin@yopmail.com", subject: "Someone made and order") 
      
     end
 
