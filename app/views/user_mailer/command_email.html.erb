@@ -13,9 +13,9 @@
     </h4>
    
     <% @order.items.each do |item|%>
-      <%= link_to rails_blob_url(item.cat_picture, disposition: "attachment") do %>
+      
       <%= image_tag item.cat_picture %>
-      <% end %>
+      
     <% end %>
     <p>
       To acces your client profile, please sign-in : <%= @url %>.

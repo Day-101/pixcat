@@ -8,9 +8,9 @@ Here is the detail of your order :
 
 
  <% @order.items.each do |item|%>
-      <%= link_to rails_blob_url(item.cat_picture, disposition: "attachment") do %>
+      
       <%= image_tag item.cat_picture %>
-      <% end %>
+      
     <% end %>
 
  

@@ -69,9 +69,10 @@ class CartsController < ApplicationController
     cancel_url: cart_cancel_url(@cart.id)
   )
 
-  respond_to do |format|
-    format.js
-  end
+    respond_to do |format|
+      format.js
+    end
+
   end
 
   def success
