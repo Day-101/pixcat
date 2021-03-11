@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: %i[ show edit update destroy create_item remove create ]
+  before_action :set_cart, only: %i[ show edit update destroy create_item remove create remove_one ]
   before_action :redirect_if_not_owned, only: [:show]
 
   # GET /carts/1 or /carts/1.json
@@ -14,10 +14,17 @@ class CartsController < ApplicationController
     if @cart.save
       redirect_to current_user.cart
     else
-      flash[:alert] = "Can't add that to the cart"
+      flash[:alert] = "Can't add that into the cart"
       redirect_to item_path(params[:item_id])
     end
   end
+
+  def remove_one
+    @cart.remove_one(params)
+    @cart.save
+    redirect_to current_user.cart
+  end
+
 
   def remove
     cart_jt = CartItemJointable.find_by(cart: @cart, item: Item.find(params[:item_id]))
@@ -52,7 +59,7 @@ class CartsController < ApplicationController
       name: item.title,
       amount: (item.price * 100).to_i,
       currency: 'eur',
-      quantity: 1,
+      quantity: CartItemJointable.find_by(cart: @cart, item: item).quantity,
       }
 
       orders << item.id

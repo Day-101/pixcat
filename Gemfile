@@ -63,3 +63,9 @@ gem 'devise'
 gem 'dotenv-rails'
 
 gem 'stripe'
+
+gem 'aws-sdk-s3'
+
+gem "mini_magick"
+
+gem "image_processing"
