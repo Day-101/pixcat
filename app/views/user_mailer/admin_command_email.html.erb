@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1> A client made an Order !</h1>
+   
+    <h4>
+     Here is the detail of the order :
+    </h4>
+    <ul>
+        <% @order.items.each do |item|%> 
+
+            <li><%= item.title %> - <%= item.price %>€</li>
+                
+        <% end %> 
+
+    </ul>
+        
+  </body>
+</html>
