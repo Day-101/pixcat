@@ -5,4 +5,8 @@ class Item < ApplicationRecord
 	has_many :cart_item_jointable, dependent: :destroy
 	has_many :order_item_jointable, dependent: :destroy
 	has_one_attached :cat_picture
+
+	def thumbnail
+		return self.cat_picture.variant(resize: "470x264")
+	end
 end
