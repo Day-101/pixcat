@@ -1,5 +1,5 @@
 <div class="container row justify-content-center mx-auto" id="cart-container">
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 cart-box p-5 my-4">
+	<div class="col-12 col-sm-12 col-md-12 col-lg-10 cart-box p-5 my-4">
 			<div class="panel-heading">
 				<div class="panel-title">
 					<div class="row">
@@ -16,37 +16,37 @@
 				<% @cart.items.each do |item| %>
 					<hr>
 					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-2"><%= image_tag item.thumbnail, :class => "cat_picture" %>
+						<div class="col-12 col-sm-6 col-md-6 col-lg-2"><%= image_tag item.thumbnail, :class => "cat_picture" %>
 						</div>
-						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+						<div class="col-12 col-sm-6 col-md-4 col-lg-4">
 							<h4 class="product-name"><strong><%= item.title %></strong></h4><h4><small><%= item.description %></small></h4>
 						</div>
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+						<div class="col-12 col-sm-12 col-md-12 col-lg-6">
 							<br>
 							<div class="row">
 
-								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-4 text-right" id="price">
+								<div class="col-3 col-sm-3 col-md-3 col-lg-3 text-right mr-0 pr-0" id="price">
 									<h6><strong><%= item.price %><span class="text-muted"> € x</span></strong></h6>
 								</div>
-								<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+								<div class="col-2 col-sm-2 col-md-2 col-lg-2">
 									<%= button_to cart_remove_one_path(@cart, item), method: "put", class:"btn btn-info" do %>
 									<i class="fas fa-minus"></i>
 									<% end %>
 								</div>
-								<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 pt-2">
+								<div class="col-1 col-sm-1 col-md-1 col-lg-1 pt-2">
 									<%= CartItemJointable.find_by(cart: @cart, item: item).quantity %>
 								</div>
-								<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+								<div class="col-2 col-sm-2 col-md-2 col-lg-2">
 									<%= button_to cart_add_to_path(@cart, item), method: "put", class:"btn btn-info" do %>
 										<i class="fas fa-plus"></i>
 									<% end %>
 								</div>
-
-								<div class="col-xs-4 col-sm-4 col-md-3 col-lg-3 text-right">
+								<div class="col-4 col-sm-4 col-md-3 col-lg-3 text-right">
 									<%= button_to cart_remove_from_path(current_user.cart, item), method: "put", class:"btn btn-danger" do %>
                   	<i class="far fa-trash-alt"></i>
                 	<% end %>
 								</div>
+
 							</div>
 						</div>
 					</div>
@@ -56,10 +56,10 @@
 			<br>
 			<div class="panel-footer">
 				<div class="row text-right">
-					<div class="col-xs-12 col-sm-6 col-md-8 col-lg-8">
+					<div class="col-12 col-sm-6 col-md-8 col-lg-8">
 						<h4>Total <strong><%= @cart.total %>€</strong></h4>
 					</div>
-					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+					<div class="col-12 col-sm-6 col-md-4 col-lg-4">
 						<%= button_to "Checkout", cart_create_path(cart_id: @cart.id), class:"btn btn-success btn-block", remote: true %>
 					</div>
 				</div>
