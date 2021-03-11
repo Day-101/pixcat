@@ -1,6 +1,30 @@
 <span class="flex-grow-1"></span>
-<footer class="text-center text-white bg-secondary">
-  <div class="text-center p-3">
-    © 2021 PixCat
-  </div>
+<footer class="grid-container text-white bg-secondary grid-footer p-4">
+  <ul>
+    <li>
+      <p class="navbar-brand text-white flex-grow-1 rocknroll" href="/">© PixCat <i class="fas fa-cat"></i></p>
+    </li>
+  </ul>
+  <ul>
+    <li class="font-weight-bold">
+      Support
+    </li>
+    <li>
+      <%= link_to "Contact us", static_pages_contact_path, class:"text-white" %>
+    </li>
+    <li>
+      <%= link_to "Privacy policy", static_pages_privacy_path, class:"text-white" %>
+    </li>
+  </ul>
+  <ul>
+    <li class="font-weight-bold">
+      About
+    </li>
+    <li>
+      <%= link_to "Our nyan concept", static_pages_concept_path, class:"text-white" %>
+    </li>
+    <li>
+      <%= link_to "Our nyan team", static_pages_team_path, class:"text-white" %>
+    </li>
+  </ul>
 </footer>
