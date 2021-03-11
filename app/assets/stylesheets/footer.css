@@ -1,0 +1,13 @@
+.grid-footer{
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.grid-footer ul{
+  list-style-type:none;
+}
+
+@media (max-width: 576px) {
+.grid-footer{
+  display: block !important;
+  text-align: center!important;}
+}
