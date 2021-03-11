@@ -1,0 +1,18 @@
+.card-img-show{max-width: 469px;}
+
+.grid-show-container{
+  max-width: 938px;
+  display: grid;
+  grid-template-columns: 469px 1fr;
+  grid-template-rows: auto auto;
+  grid-gap: 2em;
+}
+
+.grid-show-container .btn-outline-secondary{grid-row: span 2;}
+/*
+@media (max-width: 576px) {
+.grid-show-responsive{grid-template-columns: 1fr;}}
+@media (min-width: 768px) {
+.grid-show-responsive{grid-template-columns: 1fr 1fr 1fr;}}
+@media (min-width: 992px) {
+.grid-show-responsive{grid-template-columns: 1fr 1fr 1fr 1fr;}}*/

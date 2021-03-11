@@ -1,2 +1,10 @@
-
-<%= render 'show' %>
+<div class="container cart-box p-5 my-4 grid-show-container">
+  <%= image_tag @item.thumbnail, :class => "card-img-show" %>
+  <div>
+    <h5 class="card-title text-secondary"> <%= @item.title %> </h5>
+    <p class="card-text"> <%= @item.description %> </p>
+    <p class="card-text font-weight-bold"> <%= @item.price %> € </p>
+    <%= button_to "Add to cart", cart_add_to_path(current_user.cart, @item), method: "put", class: "btn btn-outline-primary" %>
+    <%= link_to 'Back', items_path, class: "btn btn-outline-secondary mt-4" %>
+  </div>
+</div>
