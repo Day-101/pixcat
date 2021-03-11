@@ -3,12 +3,11 @@ Thank you for your Order  !
 
 Here is the detail of your order : 
 
-<%= link_to "this link", @order.items[0].cat_picture.service_url %>
- <%# <% @order.items.each do |item|%>
-      
-      <%# <%= image_tag item.cat_picture %> 
-      
-    <%# <% end %> 
+<% @order.items.each do |item|%> 
+
+  <%= link_to item.title, item.cat_picture.service_url %>
+          
+<% end %> 
 
  
 You can acces all your orders by following  <%= link_to "this link", user_url(@order.user) %>.
