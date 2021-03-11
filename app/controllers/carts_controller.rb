@@ -96,12 +96,10 @@ class CartsController < ApplicationController
       @user.cart.items.destroy_all
 
     else
-      redirect_to root_path flash.alert = "Your order is not fullfilled"
     end
   end
 
   def cancel
-    redirect_to root_path flash.alert = "You canceled this order"
   end
 
   private
