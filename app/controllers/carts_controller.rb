@@ -1,6 +1,8 @@
 class CartsController < ApplicationController
+  before_action :authenticate_user!, only: [:show]
   before_action :set_cart, only: %i[ show edit update destroy create_item remove create remove_one ]
   before_action :redirect_if_not_owned, only: [:show]
+
 
   # GET /carts/1 or /carts/1.json
   def show
