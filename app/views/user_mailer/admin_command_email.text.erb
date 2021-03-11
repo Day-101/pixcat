@@ -1,0 +1,12 @@
+A client made an Order  !
+==========================================================
+
+Here is the detail of the order : 
+<ul>
+    <% @order.items.each do |item|%> 
+
+        <li><%= item.title %> - <%= item.price %>€</li>
+            
+    <% end %> 
+
+</ul>

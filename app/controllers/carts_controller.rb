@@ -95,6 +95,7 @@ class CartsController < ApplicationController
       end
       @order.save
       @order.command_send
+      @order.admin_command_send
       @user.cart.items.destroy_all
 
     else
