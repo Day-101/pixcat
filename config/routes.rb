@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'static_pages/contact'
+  get 'static_pages/privacy'
+  get 'static_pages/concept'
+  get 'static_pages/team'
 	root "items#index"
   resources :items
   devise_for :users
