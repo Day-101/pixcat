@@ -86,13 +86,13 @@ class CartsController < ApplicationController
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     if @session.payment_status == "paid"
       @user = User.find(@session.client_reference_id)
-      order = Order.new(user: @user)
+      @order = Order.new(user: @user)
       
       @session.metadata.order_id.split(",").each do |id|
-        OrderItemJointable.create(order: order, item: Item.find(id.to_i))
+        OrderItemJointable.create(order: @order, item: Item.find(id.to_i))
       end
-      order.save
-      order.command_send
+      @order.save
+      @order.command_send
       @user.cart.items.destroy_all
 
     else
