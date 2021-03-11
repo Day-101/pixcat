@@ -6,9 +6,9 @@ puts "Database has been cleaned up."
     description: Faker::Creature::Cat.breed,
     price: Faker::Number.decimal(l_digits: 2),
   )
-
+  cat_item.save
   url = URI.parse(Faker::LoremFlickr.image(size: "1280x720"))
-  filename = url.path
+  filename = cat_item.id
   file = URI.open(url)
   cat_item.cat_picture.attach(io: file, filename: filename)
   cat_item.save

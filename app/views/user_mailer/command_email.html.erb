@@ -5,20 +5,20 @@
   </head>
   <body>
     <h1> Thank you for your Order !</h1>
-    <p>
-      You are registered on our website "PixCat.fr" using the following e-mail : <%= @user.email %>.
-    </p>
+   
     <h4>
      Here is the detail of your order :
     </h4>
+    <%= link_to "this link", @order.items[0].cat_picture.service_url %>
    
-    <% @order.items.each do |item|%>
+
+    <%# <% @order.items.each do |item|%> 
       
-      <%= image_tag item.cat_picture %>
+      <%# <%= image_tag item.cat_picture %> 
       
-    <% end %>
+    <%# <% end %> 
     <p>
-      To acces your client profile, please sign-in : <%= @url %>.
+      You can acces all your orders by following  <%= link_to "this link", user_url(@order.user) %>.
     </p>
     <p> See you soon on PixCat.fr !
   </body>

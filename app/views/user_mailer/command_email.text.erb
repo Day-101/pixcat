@@ -1,19 +1,16 @@
 Thank you for your Order  !
 ==========================================================
 
- You are registered on our website "PixCat.fr" using the following e-mail : <%= @user.email %>.
-
-
 Here is the detail of your order : 
 
-
- <% @order.items.each do |item|%>
+<%= link_to "this link", @order.items[0].cat_picture.service_url %>
+ <%# <% @order.items.each do |item|%>
       
-      <%= image_tag item.cat_picture %>
+      <%# <%= image_tag item.cat_picture %> 
       
-    <% end %>
+    <%# <% end %> 
 
  
-To acces your client profile, please sign-in : <%= @url %>.
+You can acces all your orders by following  <%= link_to "this link", user_url(@order.user) %>.
  
-À très vite sur PixCat.fr !
+See you soon on PixCat.fr !
