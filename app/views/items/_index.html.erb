@@ -4,7 +4,7 @@
     <div class="custom-card p-4">
         <a href="<%= item_path(item.id) %>" class="text-decoration-none">
           <div class="">
-            <%= image_tag item.cat_picture, :class => "card-img-top img-card-radius" %>
+            <%= image_tag item.thumbnail, :class => "card-img-top img-card-radius" %>
             <div class="">
               <h5 class="card-title text-center m-0 p-2 text-secondary"><%= item.title %></h5>
               <span class="text-center d-block mb-1"><%= "#{item.price}$" %></span>
@@ -19,7 +19,7 @@
     <% else %>
       <a href="<%=new_user_session_path%>" class="custom-card text-decoration-none">
         <div class="pt-4 pr-4 pl-4">
-          <%= image_tag item.cat_picture, :class => "card-img-top rounded-0" %>
+          <%= image_tag item.thumbnail, :class => "card-img-top rounded-0" %>
           <div class="">
             <h5 class="card-title text-center m-0 p-2 text-secondary"><%= item.title %></h5>
           </div>
