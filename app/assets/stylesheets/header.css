@@ -26,3 +26,4 @@
 .text-shadow:hover{
   text-shadow: 1px 1px 2px #f3969a, 0 0 1em #20c997, 0 0 0.2em #20c997;
 }
+.drop-fix{margin-top: -1px;}
